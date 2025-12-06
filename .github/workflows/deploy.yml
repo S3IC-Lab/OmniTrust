@@ -22,14 +22,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10
+          python-version: '3.10'   # ← 必须加引号
 
       - name: Install dependencies
         run: |
           pip install mkdocs-material
           pip install mkdocs-awesome-pages-plugin
-          pip install mkdocs-glightbox  # 如果你启用了 Lightbox 图片
-          pip install -r requirements.txt || true  # 可选
+          pip install mkdocs-glightbox || true
 
       - name: Build MkDocs site
         run: mkdocs build --strict

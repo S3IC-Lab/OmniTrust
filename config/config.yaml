@@ -1,0 +1,41 @@
+# config.yaml
+taskArgs:
+  taskType: judge
+  num_choices: 1
+  num_gpus_per_model: 8
+  num_gpus_total: 1
+  max_gpu_memory: null
+  dtype: float16
+  revision: main
+
+WttaskArgs:
+  taskType: watermark
+  num_choices: 1
+  num_gpus_per_model: 8
+  num_gpus_total: 1
+  max_gpu_memory: null
+  dtype: float16
+  revision: main
+
+llmArgs:
+  model_path: /path/to/model/locally/or/on/hugging-face
+  model_id: vicuna-7b-v1.5
+  max_new_tokens: 1024
+  temperature: 0.7
+  num_choices: 1
+  num_gpus_per_model: 8
+  num_gpus_total: 1
+  max_gpu_memory: null
+  dtype: float16
+  revision: main
+
+dataArgs:
+  input_file: data/dataset/flores200/demo.json
+  outputs_file: null
+  ref_file: null
+  test_file: null
+  prompt_file: null
+
+debugArgs:
+  question_begin: null
+  question_end: null

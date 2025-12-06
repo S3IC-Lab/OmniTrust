@@ -1,0 +1,93 @@
+site_name: OmniTrust Documentation
+site_description: Trustworthiness Evaluation Platform for Large Language Models (LLMs)
+site_author: S3IC Lab
+
+theme:
+  name: material
+  logo: assets/OmniTrust-logo.png
+  favicon: assets/OmniTrust-logo.png
+  language: en
+  palette:
+    - scheme: default
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - toc.follow
+    - toc.integrate
+    - content.code.copy
+    - content.code.annotate
+    - content.code.select
+    - search.suggest
+    - search.highlight
+    - search.share
+
+# Navigation
+nav:
+  - Home: index.md
+  - Safety Module:
+      - Overview: safety/index.md
+      - CipherChat: safety/cipherchat.md
+      - GCG: safety/gcg.md
+      - AutoDAN: safety/autodan.md
+  - Privacy Module:
+      - Overview: privacy/index.md
+  - Detectability Module:
+      - Overview: detectability/index.md
+  - Hallucination Module:
+      - Overview: hallucination/index.md
+  - Fairness Module:
+      - Overview: fairness/index.md
+  - Fidelity Module:
+      - Overview: fidelity/index.md
+
+# Markdown Enhancements
+markdown_extensions:
+  - admonition
+  - def_list
+  - footnotes
+  - attr_list
+  - md_in_html
+
+  # Table of contents
+  - toc:
+      permalink: true
+
+  # Better code blocks
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+
+  # Syntax highlighting & extensions
+  - codehilite:
+      guess_lang: false
+      linenums: false
+
+  # Improved Markdown functionality
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.tilde
+
+# Search
+plugins:
+  - search:
+      lang: en
+      separator: '[\s\-]+'

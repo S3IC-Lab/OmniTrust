@@ -1,0 +1,21 @@
+framework: "openai"
+
+device: "cuda"
+mode: "chat"
+model:
+  name: "deepseek-r1:70b"
+
+llm: "ollama"
+
+batch_size: 20
+skip_special_tokens: true
+
+# 生成参数配置（基于70B模型特点）
+params:
+#  max_tokens: 128       # 适合长文本生成（可根据需求调整）
+#  num_beams: 4              # 增加搜索宽度提升生成质量
+#  do_sample: false          # 启用采样策略
+  temperature: 0.0          # 平衡生成创造性与稳定性
+  top_p: 0.0                # nucleus sampling参数
+#  top_k: 0.0                # nucleus sampling参数
+

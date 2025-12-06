@@ -1,0 +1,45 @@
+# ================================================================
+# Global API Configuration
+# ================================================================
+api:
+  default:  # Default values used when a specific model is not overridden
+    api_model: gpt-4o
+    api_key: ${OPENAI_API_KEY}
+    api_url: https://api.openai.com/v1/completions
+    timeout: 30         # seconds
+    max_retries: 3
+    proxy: null         # e.g., http://127.0.0.1:7890
+
+  models:
+    # -----------------------------
+    # OpenAI GPT-4O
+    # -----------------------------
+    gpt-4o:
+      api_model: gpt-4o
+      api_url: https://api.openai.com/v1/completions
+      api_key: ${OPENAI_API_KEY}
+
+    # -----------------------------
+    # DeepSeek Chat
+    # -----------------------------
+    deepseek-chat:
+      api_model: deepseek-chat
+      api_url: https://api.deepseek.com/v1/chat/completions
+      api_key: ${DEEPSEEK_API_KEY}
+
+    # -----------------------------
+    # Qwen Max
+    # -----------------------------
+    qwen-max:
+      api_model: qwen-max
+      api_url: https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation
+      api_key: ${DASHSCOPE_API_KEY}
+
+    # -----------------------------
+    # Custom Model Example
+    # -----------------------------
+    my-custom-model:
+      api_model: my-custom-model
+      api_url: https://my-company-ai.com/api/v2/generate
+      api_key: ${MY_COMPANY_KEY}
+      timeout: 60

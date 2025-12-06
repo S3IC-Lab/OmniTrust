@@ -1,0 +1,23 @@
+framework: "openai"
+
+# 使用自定义API端点的DeepSeek-V3配置
+llm: "custom"  # 表示使用自定义端点
+mode: "chat"
+batch_size: 1
+
+# DeepSeek-V3模型配置
+model:
+  name: "DeepSeek-V3"
+  # 自定义API端点信息会通过运行时参数传递
+
+# API参数配置（使用默认参数）
+params:
+  max_tokens: 1024
+  temperature: 0.7
+  top_p: 1.0
+  n: 1
+  stream: false
+  stop: null
+  presence_penalty: 0.0
+  frequency_penalty: 0.0
+  logit_bias: {}

@@ -1,0 +1,20 @@
+framework: "huggingface"
+
+device: "cuda"
+mode: "AutoModelForCausalLM"
+model:
+  name: "Qwen/Qwen2-7B-Instruct"
+
+skip_special_tokens: true
+quantification: torch.bfloat16
+max_length: 512
+
+# 生成参数配置（基于70B模型特点）
+params:
+  do_sample: False  # or do_sample: "True", then u can set temperature,top_p,top_k
+  max_length: 1024
+  repetition_penalty: 1.2
+  #  temperature: 0.6          # 平衡生成创造性与稳定性
+  #  top_p: 0.2                # nucleus sampling参数
+  #  top_k: 0.4                # nucleus sampling参数
+

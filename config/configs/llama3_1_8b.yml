@@ -1,0 +1,17 @@
+framework: "openai"
+
+device: "cuda"
+mode: "chat"
+
+model:
+  name: "llama3.1:8b"
+
+llm: "ollama"
+
+batch_size: 20
+skip_special_tokens: true
+
+params:
+  max_tokens: 128       # 适合长文本生成（可根据需求调整）
+  temperature: 1.0         # 平衡生成创造性与稳定性
+  top_p: 0.9                # nucleus sampling参数

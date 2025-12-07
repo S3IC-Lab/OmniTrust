@@ -1,4 +1,4 @@
-# AdvBench Dataset (Download Instructions)
+# AdvBench Dataset
 
 This folder is intended to store the **AdvBench** dataset locally.
 
@@ -18,9 +18,3 @@ repo = "S3IC/AdvBench"
 hf_hub_download(repo_id=repo, filename="advbench.csv", repo_type="dataset", local_dir=".")
 hf_hub_download(repo_id=repo, filename="advbench.json", repo_type="dataset", local_dir=".")
 ```
-
-----DELETE THIS FOR RELEASE----
-
-For all the datasets, it is recommended to put it on the official huggingface website.
-like https://huggingface.co/datasets/S3IC/advbench
-

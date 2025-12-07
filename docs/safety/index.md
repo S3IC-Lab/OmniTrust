@@ -11,7 +11,7 @@ The **Safety Module** evaluates jailbreak robustness, harmfulness resistance, an
 ## Attack Methods in OmniTrust
 This module includes multiple attack types, such as:
 
-- Cipher-based jailbreaks  
+- [CipherChat](cipherchat.md)
 - Optimization-based adversarial attacks
 
 Use the navigation panel to access documentation for each method.

@@ -3,3 +3,5 @@ from .model_adapter import (
     get_conversation_template,
     # add_model_args,
 )
+
+from .lvlm import InternVL, LLaVA, LLaVANeXT, Qwen2VL

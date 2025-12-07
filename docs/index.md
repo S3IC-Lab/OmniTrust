@@ -69,7 +69,7 @@ Pluggable scoring system and automated risk grading.
 
 ## 💡 For Developers
 
-Refer to the [developer guideline](develop/index.md) for internal contribution rules, component registration, and API usage.
+Refer to the [developer guideline](dev/index.md) for internal contribution rules, component registration, and API usage.
 
 ---
 

@@ -1,11 +1,11 @@
-site_name: OmniTrust Documentation
+site_name: ""
 site_description: Trustworthiness Evaluation Platform for Large Language Models (LLMs)
 site_author: S3IC Lab
 
 theme:
   name: material
-  logo: assets/OmniTrust-logo.png
-  favicon: assets/OmniTrust-logo.png
+  logo: assets/OmniTrust-icon.png
+  favicon: assets/OmniTrust-icon.png
   language: en
   palette:
     - scheme: default
@@ -38,6 +38,7 @@ theme:
 # Navigation
 nav:
   - Home: index.md
+  - Develop: dev/index.md
   - Safety Module:
       - Overview: safety/index.md
       - CipherChat: safety/cipherchat.md

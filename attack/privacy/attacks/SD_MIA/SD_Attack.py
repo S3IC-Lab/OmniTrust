@@ -6,7 +6,6 @@ from transformers import CLIPTextModel, CLIPTokenizer
 from tqdm.auto import tqdm
 from attack.privacy.attacks.SD_MIA.dataset import load_pokemon_datasets, load_coco_datasets, load_flickr_datasets, load_ti_datasets
 from sklearn import metrics
-from transformers import BlipProcessor, BlipForConditionalGeneration
 from attack.privacy.attacks.SD_MIA.filter import Fourier_filter
 
 

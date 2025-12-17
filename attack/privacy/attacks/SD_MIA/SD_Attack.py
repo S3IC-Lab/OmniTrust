@@ -280,7 +280,7 @@ def SD_Attack(args):
     assert flags.dataset in ['pokemon', 'coco', 'flickr', 'text-to-image-2m']
 
     flags.diff_path = args.model_path
-    dataset_root = "/home/puwei_lian/storage/datasets/"
+    dataset_root = "/home/puwei_lian/workspace/OmniTrust/data/dataset"
 
     init_model(flags.diff_path, device)
     print("loading finish!")

@@ -21,7 +21,7 @@ def diffusion_privacy(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--attack', default='C_DEA', type=str, choices=['MIA', 'C_DEA', 'SD_MIA'])
+    parser.add_argument('--attack', default='MIA', type=str, choices=['MIA', 'C_DEA', 'SD_MIA'])
     parser.add_argument('--revision', default="main", type=str)
     parser.add_argument('--num_gpus_per_model', default=1, type=int)
     parser.add_argument('--max_gpu_memory', help="Maxmum GPU memory used for model weights per GPU.", type=int)
@@ -45,10 +45,10 @@ if __name__ == '__main__':
 
     elif args.attack == 'C_DEA':
         parser.add_argument('--num_sample', default=10, type=int, help='use -1 to include all samples')
-        parser.add_argument('--method', default='enron', type=str, choices=['enron', 'memrise'])
+        parser.add_argument('--method', default='memrise', type=str, choices=['enron', 'memrise'])
         parser.add_argument('--min_prompt_len', default=200, type=int)
         parser.add_argument('--max_seq_len', default=512, type=int)
-        parser.add_argument('--dataset', default="enron", type=str, choices=["enron", "xsum", "agnews"])
+        parser.add_argument('--dataset', default="xsum", type=str, choices=["enron", "xsum", "agnews"])
         parser.add_argument('--bert_path', default='/home/hub/model/bert', type=str)
         parser.add_argument('--prefix_len', default=100, type=int)
         parser.add_argument('--suffix_len', default=500, type=int)

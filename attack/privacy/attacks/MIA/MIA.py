@@ -48,29 +48,29 @@ def MIA(model, tokenizer, args):
 
     # loading datasets
     if args.dataset == 'agnews':
-        ds_1 = agnewsDataset("/home/puwei_lian/workspace/AwesomeLLMSecurityPlatform/data/dataset/agnews/data", datatype='train')
+        ds_1 = agnewsDataset("/home/puwei_lian/workspace/OmniTrust/data/dataset/agnews/data", datatype='train')
         train_set, _ = ds_1.load_data()
-        ds_2 = agnewsDataset("/home/puwei_lian/workspace/AwesomeLLMSecurityPlatform/data/dataset/agnews/data", datatype='test')
+        ds_2 = agnewsDataset("/home/puwei_lian/workspace/OmniTrust/data/dataset/agnews/data", datatype='test')
         test_set, _ = ds_2.load_data()
     elif args.dataset == 'xsum':
-        ds_1 = xsumDataset("/home/puwei_lian/workspace/AwesomeLLMSecurityPlatform/data/dataset/xsum/default", datatype='train')
+        ds_1 = xsumDataset("/home/puwei_lian/workspace/OmniTrust/data/dataset/xsum/default", datatype='train')
         train_set, _ = ds_1.load_data()
-        ds_2 = xsumDataset("/home/puwei_lian/workspace/AwesomeLLMSecurityPlatform/data/dataset/xsum/default", datatype='test')
+        ds_2 = xsumDataset("/home/puwei_lian/workspace/OmniTrust/data/dataset/xsum/default", datatype='test')
         test_set, _ = ds_2.load_data()
     elif args.dataset == 'wikitext-103-v1':
-        ds_1 = wikitextDataset("/home/puwei_lian/workspace/AwesomeLLMSecurityPlatform/data/dataset/wikitext/wikitext-103-raw-v1", datatype='train')
+        ds_1 = wikitextDataset("//home/puwei_lian/workspace/OmniTrust/data/dataset/wikitext/wikitext-103-raw-v1", datatype='train')
         train_set, _ = ds_1.load_data()
-        ds_2 = wikitextDataset("/home/puwei_lian/workspace/AwesomeLLMSecurityPlatform/data/dataset/wikitext/wikitext-103-raw-v1", datatype='test')
+        ds_2 = wikitextDataset("/home/puwei_lian/workspace/OmniTrust/data/dataset/wikitext/wikitext-103-raw-v1", datatype='test')
         test_set, _ = ds_2.load_data()
     elif args.dataset == 'wikitext-2-v1':
-        ds_1 = wikitextDataset("/home/puwei_lian/workspace/AwesomeLLMSecurityPlatform/data/dataset/wikitext/wikitext/wikitext-2-v1", datatype='train')
+        ds_1 = wikitextDataset("/home/puwei_lian/workspace/OmniTrust/data/dataset/wikitext/wikitext/wikitext-2-v1", datatype='train')
         train_set, _ = ds_1.load_data()
-        ds_2 = wikitextDataset("/home/puwei_lian/workspace/AwesomeLLMSecurityPlatform/data/dataset/wikitext/wikitext/wikitext-2-v1", datatype='test')
+        ds_2 = wikitextDataset("/home/puwei_lian/workspace/OmniTrust/data/dataset/wikitext/wikitext/wikitext-2-v1", datatype='test')
         test_set, _ = ds_2.load_data()
     elif args.dataset == 'wikimia':  # 添加 WikiMIA 数据集支持
-        ds_1 = WikiMIADataset("/home/puwei_lian/workspace/AwesomeLLMSecurityPlatform/data/dataset/wikimia/data", datatype='member')
+        ds_1 = WikiMIADataset("/home/puwei_lian/workspace/OmniTrust/data/dataset/wikimia/data", datatype='member')
         train_set, _ = ds_1.load_data()
-        ds_2 = WikiMIADataset("/home/puwei_lian/workspace/AwesomeLLMSecurityPlatform/data/dataset/wikimia/data", datatype='non_member')
+        ds_2 = WikiMIADataset("/home/puwei_lian/workspace/OmniTrust/data/dataset/wikimia/data", datatype='non_member')
         test_set, _ = ds_2.load_data()
     else:
         raise NotImplementedError(f"dataset: {args.dataset}")

@@ -9,7 +9,7 @@ from attack.privacy.attacks.DataExtraction.Analyze import get_enron_results, get
 from tqdm import tqdm
 from data.data_registry.agnews import agnewsDataset
 from data.data_registry.xsum import xsumDataset
-from data.data_registry.wikitext import wikitextDataset
+from data.data_registry.enron import EnronDataset
 random.seed(0)
 
 
@@ -17,7 +17,7 @@ def Conditional_DEA(model, tokenizer, args):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # loading models
-    llm = FinetunedCasualLM(model_path=args.model_path, arch=args.model_path, max_seq_len=args.max_seq_len, model=model,tokenizer=tokenizer)
+    llm = FinetunedCasualLM(model_path=args.model_path, arch=args.model_path, max_seq_len=args.max_seq_len, model=model, tokenizer=tokenizer)
     print("The model is loaded successfully")
 
     # loading datasets
@@ -25,17 +25,17 @@ def Conditional_DEA(model, tokenizer, args):
     labels = []
     if args.dataset == 'enron':
         args.method = 'enron'
-        enron = EnronDataset("../data/dataset/enron")
+        enron = EnronDataset("/home/puwei_lian/workspace/OmniTrust/data/dataset/enron")
         format = f'prefix-{args.min_prompt_len}'
         # format in ['prefix-50','0-shot-known-domain-b','0-shot-unknown-domain-c', '3-shot-known-domain-c', '5-shot-unknown-domain-b'........]
         prompts, labels = enron.load_data(format=format, tokenizer_path=args.model_path)
     elif args.dataset == 'xsum':
         args.method = 'memrise'
-        dataset = xsumDataset("/home/model/dataset/xsum/default", datatype='train')
+        dataset = xsumDataset("/home/puwei_lian/workspace/OmniTrust/data/dataset/xsum/default", datatype='train')
         prompts, labels = dataset.load_data()
     elif args.dataset == 'agnews':
         args.method = 'memrise'
-        dataset = agnewsDataset("../data/dataset/agnews/data", datatype='train')
+        dataset = agnewsDataset("/home/puwei_lian/workspace/OmniTrust/data/dataset/agnews/data", datatype='train')
         prompts, labels = dataset.load_data()
 
 

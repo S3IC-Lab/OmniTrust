@@ -1,0 +1,35 @@
+random_seed: 48
+model_name: gpt2_xl
+target_model: /home/chaoyue_yang/AwesomeLLMSecurityPlatform/attack/fine-tuning/gpt2xl_lora_merged
+reference_model: /home/chaoyue_yang/AwesomeLLMSecurityPlatform/attack/fine-tuning/gpt2xl_refer_lora_merged
+dataset_name: ag_news # xsum, ag_news, wikitext
+dataset_config_name: null # wikitext-2-raw-v1 null
+cache_path: ./cache
+use_dataset_cache: true
+packing: true
+calibration: true # whether to enable calibration
+add_eos_token: false
+add_bos_token: false
+pad_token_id: null
+attack_kind: stat # valid attacks: nn, stat
+eval_batch_size: 1 # batch size of the evaluation phase
+maximum_samples: 20 # the maximum samples number for member and non-member records.
+block_size: 128
+validation_split_percentage: 0.1
+preprocessing_num_workers: 1
+mask_filling_model_name: t5-base
+buffer_size: 1
+mask_top_p: 1.0
+span_length: 2
+pct: 0.3 # pct_words_masked
+ceil_pct: false
+int8: false
+half: false
+perturbation_number: 1 # the number of different perturbation strength / position; debugging parameter, should be set to 1 in the regular running.
+sample_number: 2 # the number of sampling
+train_sta_idx: 0
+train_end_idx: 10000
+eval_sta_idx: 0
+eval_end_idx: 1000
+attack_data_path: attack
+load_attack_data: false # whether to load prepared attack data if existing.

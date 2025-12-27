@@ -6,9 +6,9 @@ from modules.hallucination.llm.factool.pipeline import factool_pipeline
 from modules.hallucination.llm.cove.pipeline import cove_pipeline
 from modules.hallucination.llm.factscore.pipeline import factscore_pipeline
 from modules.hallucination.llm.selfcheckgpt.pipeline import selfcheckgpt_pipeline
-# from modules.hallucination.vlm.vl_uncertainty.pipeline import vl_uncertainty_pipeline
+from modules.hallucination.vlm.vl_uncertainty.pipeline import vl_uncertainty_pipeline
+from modules.hallucination.vlm.vlm_autodetect.pipeline import vlm_autodetect_pipeline
 # from modules.hallucination.vlm.vlm_qa.pipeline import vlm_qa_pipeline
-# from modules.hallucination.vlm.vlm_autodetect.pipeline import vlm_autodetect_pipeline
 
 
 class Hallucination():
@@ -24,39 +24,17 @@ class Hallucination():
             self.pipeline = selfcheckgpt_pipeline(self.args)
         elif self.args.method == 'vl-uctt':
             self.pipeline = vl_uncertainty_pipeline(self.args)
+        elif self.args.method == 'auto-detect':
+            self.pipeline = vlm_autodetect_pipeline(self.args)
 
     def llm_run(self):
         self.pipeline.run(self.args)
     
-    def vlm_run(self, args):
-        if args.method == "hallusionbench":
-            pipeline = vlm_qa_pipeline(
-                domain="hallusionbench",
-                foundation_model_path=args.model_name
-            )
-        elif args.method == "vh-test-oeq":
-            pipeline = vlm_qa_pipeline(
-                domain="vh-test-oeq",
-                foundation_model_path=args.model_name
-            )
-        elif args.method == "vh-test-ynq":
-            pipeline = vlm_qa_pipeline(
-                domain="vh-test-ynq",
-                foundation_model_path=args.model_name
-            )
-        elif args.method == "auto-detect":
-            pipeline = vlm_autodetect_pipeline(
-                domain="auto-detect",
-                foundation_model_path=args.model_name,
-                evaluation_type = args.autodetect_type
-            )
-        elif  args.method == "vl-uctt":
+    def vlm_run(self):
+        if args.method == "vl-uctt" or args.method == "auto-detect":
+            # 统一使用 pipeline.run() 方法
             self.pipeline.run()
             return
-
-        pipeline.get_response()
-        result = pipeline.evaluation()
-        return result
         
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -125,8 +103,18 @@ if __name__ == '__main__':
     
     elif args.method == 'auto-detect':
         auto_group = parser.add_argument_group('autodetect')
-        auto_group.add_argument('--model-name', type=str, default="llama-7b")
-        auto_group.add_argument('--autodetect-type', type=str, default="g", help="LLM-free detect type, can use 'g' or 'd' or 'a'")
+        auto_group.add_argument('--model-name', type=str, default="llava-1.5-13b-hf", 
+                               help="Model name or path. Supports: llava-1.5-13b-hf, llava-1.5-7b-hf, llava-v1.6-vicuna-13b-hf, Qwen2-VL-2B-Instruct, etc.")
+        auto_group.add_argument('--autodetect-type', type=str, default="d", 
+                               choices=['a', 'g', 'd', 'de', 'da', 'dr'],
+                               help="LLM-free detect type: 'a' (all), 'g' (generative), 'd' (discriminative), 'de' (existence), 'da' (attribute), 'dr' (relation)")
+        auto_group.add_argument('--model_path_dir', type=str, default=None, help='Model path directory (optional)')
+        auto_group.add_argument('--data_path_dir', type=str, default='modules/hallucination/vlm/vlm_autodetect/query', help='Data path directory (optional)')
+        auto_group.add_argument('--word-association', type=str, default=None, help='Path to word association file')
+        auto_group.add_argument('--safe-words', type=str, default=None, help='Path to safe words file')
+        auto_group.add_argument('--annotation', type=str, default=None, help='Path to annotation file')
+        auto_group.add_argument('--metrics', type=str, default=None, help='Path to metrics file')
+        auto_group.add_argument('--similarity-score', type=float, default=0.8, help='Similarity score threshold')
 
     elif args.method == 'vl-uctt':
         vluctt_group = parser.add_argument_group('vl-uctt')
@@ -144,8 +132,8 @@ if __name__ == '__main__':
         vluctt_group.add_argument('--inference_temp', type=float, default=0.1)
         vluctt_group.add_argument('--sampling_temp', type=float, default=1.0)
         vluctt_group.add_argument('--sampling_time', type=int, default=5)
-        vluctt_group.add_argument('--model_path_dir', type=str, default='/home/chunxue_xu/storage/model')
-        vluctt_group.add_argument('--data_path_dir', type=str, default='/home/chunxue_xu/storage/dataset/ScienceQA')
+        vluctt_group.add_argument('--model_path_dir', type=str, default='~/models')
+        vluctt_group.add_argument('--data_path_dir', type=str, default='~/datasets/ScienceQA')
 
 
     args = parser.parse_args()

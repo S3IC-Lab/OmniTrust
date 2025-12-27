@@ -1,0 +1,6 @@
+下载spacy中的分词模型可以直接下载assets自行安装，速度较快
+模型官网：https://github.com/explosion/spacy-models/releases?q=en_core_web_lg&expanded=true
+
+nltk_tab的问题：
+https://blog.csdn.net/TZfool/article/details/141197233
+https://blog.csdn.net/iceliooo/article/details/142204897

@@ -7,13 +7,17 @@ warnings.filterwarnings("ignore")
 
 class Qwen2VL:
 
-    def __init__(self, version, model_path_dir):
+    def __init__(self, version, model_path_dir=None):
         self.version = version
         self.model_path_dir = model_path_dir
         self.build_model()
 
     def build_model(self):
-        model_name = f"{self.model_path_dir}/{self.version}"
+        if self.model_path_dir:
+            model_name = f"{self.model_path_dir}/{self.version}"
+        else:
+            # 如果没有提供路径，使用 HuggingFace 模型名称
+            model_name = f"Qwen/{self.version}"
         self.model = Qwen2VLForConditionalGeneration.from_pretrained(
                         model_name,
                         torch_dtype=torch.bfloat16,

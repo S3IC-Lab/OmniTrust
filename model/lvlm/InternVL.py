@@ -97,12 +97,16 @@ def load_image(image_file, input_size=448, max_num=12):
 
 class InternVL:
 
-    def __init__(self, version):
+    def __init__(self, version, model_path_dir=None):
         self.version = version
+        self.model_path_dir = model_path_dir
         self.build_model()
 
     def build_model(self):
-        model_name = f'OpenGVLab/{self.version}'
+        if self.model_path_dir:
+            model_name = f'{self.model_path_dir}/{self.version}'
+        else:
+            model_name = f'OpenGVLab/{self.version}'
         device_map = split_model(self.version)
         self.model = AutoModel.from_pretrained(
             model_name,

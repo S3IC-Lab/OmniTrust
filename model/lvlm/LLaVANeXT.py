@@ -7,12 +7,16 @@ warnings.filterwarnings("ignore")
 
 class LLaVANeXT:
 
-    def __init__(self, version):
+    def __init__(self, version, model_path_dir=None):
         self.version = version
+        self.model_path_dir = model_path_dir
         self.build_model()
 
     def build_model(self):
-        model_name = f"llava-hf/{self.version}"
+        if self.model_path_dir:
+            model_name = f"{self.model_path_dir}/{self.version}"
+        else:
+            model_name = f"llava-hf/{self.version}"
         self.model = LlavaNextForConditionalGeneration.from_pretrained(
             model_name,
             torch_dtype=torch.float16,

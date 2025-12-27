@@ -2,10 +2,10 @@ import argparse
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from modules.hallucination.llm.factool.pipeline import factool_pipeline
-from modules.hallucination.llm.cove.pipeline import cove_pipeline
-from modules.hallucination.llm.factscore.pipeline import factscore_pipeline
-from modules.hallucination.llm.selfcheckgpt.pipeline import selfcheckgpt_pipeline
+# from modules.hallucination.llm.factool.pipeline import factool_pipeline
+# from modules.hallucination.llm.cove.pipeline import cove_pipeline
+# from modules.hallucination.llm.factscore.pipeline import factscore_pipeline
+# from modules.hallucination.llm.selfcheckgpt.pipeline import selfcheckgpt_pipeline
 from modules.hallucination.vlm.vl_uncertainty.pipeline import vl_uncertainty_pipeline
 from modules.hallucination.vlm.vlm_autodetect.pipeline import vlm_autodetect_pipeline
 # from modules.hallucination.vlm.vlm_qa.pipeline import vlm_qa_pipeline
@@ -142,7 +142,7 @@ if __name__ == '__main__':
     if(args.model_type == "llm"):
         hallucination_instance.llm_run()
     else:
-        outputs = hallucination_instance.vlm_run(args)
+        outputs = hallucination_instance.vlm_run()
 
     
 

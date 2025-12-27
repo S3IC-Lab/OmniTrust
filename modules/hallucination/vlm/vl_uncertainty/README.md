@@ -303,14 +303,15 @@ python OmniTrust/examples/hallucination.py \
     --method vl-uctt \
     --model-type vlm \
     --lvlm Qwen2-VL-2B-Instruct \
-    --benchmark MMVet \
-    --llm Qwen2.5-3B-Instruct \
+    --benchmark LLaVABench \
+    --llm Qwen2-0.5B-Instruct \
     --uncertainty vl_uncertainty \
     --visual_perturbation blurring \
     --blur_radius_list 0.1 0.3 0.5 0.7 1.0 \
     --textual_perturbation llm_rephrasing \
     --sampling_time 5 \
-    --data_path_dir ~/datasets/mm-vet
+    --data_path_dir ~/datasets/ScienceQA \
+    --model_path_dir ~/model
 ```
 
 ### 示例 2：使用语义熵方法
@@ -325,7 +326,8 @@ python OmniTrust/examples/hallucination.py \
     --uncertainty semantic_entropy \
     --sampling_temp 0.8 \
     --sampling_time 10 \
-    --data_path_dir ~/datasets/ScienceQA
+    --data_path_dir ~/datasets/ScienceQA \
+    --model_path_dir ~/model
 ```
 
 ### 示例 3：使用旋转和词交换扰动
@@ -340,7 +342,8 @@ python OmniTrust/examples/hallucination.py \
     --visual_perturbation rotation \
     --textual_perturbation swapping \
     --sampling_time 5 \
-    --data_path_dir ~/datasets/llava-bench-in-the-wild
+    --data_path_dir ~/datasets/ScienceQA \
+    --model_path_dir ~/model
 ```
 
 ## 注意事项

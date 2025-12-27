@@ -71,10 +71,8 @@ BENCHMARK_TYPE = {
 class vl_uncertainty_pipeline(vlm_pipeline):
     def __init__(self, args):
         # 从 args 获取模型名称（用于基类初始化）
-        model_name = getattr(args, 'lvlm', 'Qwen2-VL-2B-Instruct')
-        
         # 调用父类初始化
-        super().__init__(domain="vl-uctt", foundation_model_path=model_name)
+        super().__init__(domain="vl-uctt")
         
         self.args = args
     

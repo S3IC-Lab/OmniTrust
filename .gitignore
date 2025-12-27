@@ -34,8 +34,7 @@ ENV/
 *~
 
 # Jupyter Notebook
-.ipynb_checkpoints
-*.ipynb
+.ipynb_checkpoints/
 
 # Data files - 阻止上传大型数据集文件
 modules/hallucination/vlm/vlm_autodetect/query/query_all.json
@@ -43,11 +42,11 @@ data/dataset/halu_autodetect/image/
 *.json.bak
 
 # Results and outputs
-exp/
+**/exp/
 outputs/
 results/
 *.log
-log_*.json
+**/exp/log_*.json
 
 # Model files (large)
 *.bin

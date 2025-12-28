@@ -28,13 +28,16 @@ class BiasType(Enum):
 
     # Social/Demographic Biases
     GENDER = "gender"                 # Gender bias
-    RACIAL = "racial"                 # Racial bias
+    RACE = "race"                     # Race bias
+    RACIAL = "racial"                 # Racial bias (alias)
     AGE = "age"                       # Age bias
-    RELIGIOUS = "religious"           # Religious bias
+    RELIGION = "religion"             # Religion bias
+    RELIGIOUS = "religious"           # Religious bias (alias)
     POLITICAL = "political"           # Political bias
     SOCIOECONOMIC = "socioeconomic"   # Socioeconomic bias
     DISABILITY = "disability"         # Disability bias
     NATIONALITY = "nationality"       # Nationality/origin bias
+    SEXUAL_ORIENTATION = "sexual_orientation"  # Sexual orientation bias
 
     # Representation Biases
     STEREOTYPE = "stereotype"         # Stereotyping
@@ -233,13 +236,16 @@ BIAS_TYPE_TO_CATEGORY: Dict[BiasType, BiasCategory] = {
     BiasType.FREQUENCY: BiasCategory.COGNITIVE,
     BiasType.SELECTIVE: BiasCategory.COGNITIVE,
     BiasType.GENDER: BiasCategory.DEMOGRAPHIC,
+    BiasType.RACE: BiasCategory.DEMOGRAPHIC,
     BiasType.RACIAL: BiasCategory.DEMOGRAPHIC,
     BiasType.AGE: BiasCategory.DEMOGRAPHIC,
+    BiasType.RELIGION: BiasCategory.DEMOGRAPHIC,
     BiasType.RELIGIOUS: BiasCategory.DEMOGRAPHIC,
     BiasType.POLITICAL: BiasCategory.DEMOGRAPHIC,
     BiasType.SOCIOECONOMIC: BiasCategory.DEMOGRAPHIC,
     BiasType.DISABILITY: BiasCategory.DEMOGRAPHIC,
     BiasType.NATIONALITY: BiasCategory.DEMOGRAPHIC,
+    BiasType.SEXUAL_ORIENTATION: BiasCategory.DEMOGRAPHIC,
     BiasType.STEREOTYPE: BiasCategory.REPRESENTATION,
     BiasType.REPRESENTATION: BiasCategory.REPRESENTATION,
     BiasType.TOXICITY: BiasCategory.REPRESENTATION,

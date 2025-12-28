@@ -5,12 +5,13 @@
 Bias evaluators for LLM fairness assessment.
 
 This package contains evaluators for:
-- Cognitive biases: order, compassion, bandwagon, distraction, selective, frequency
-- Social biases: age, gender, race, religion, nationality, political
+- Cognitive biases (6): order, compassion, bandwagon, distraction, selective, frequency
+- Social biases (6): age, gender, race, religion, nationality, political
 """
 
 from .cognitive import (
     CognitiveBiasEvaluator,
+    CognitiveBiasResult,
     OrderBiasEvaluator,
     CompassionBiasEvaluator,
     BandwagonBiasEvaluator,
@@ -19,14 +20,36 @@ from .cognitive import (
     FrequencyBiasEvaluator,
 )
 
+from .social import (
+    SocialBiasEvaluator,
+    SocialBiasResult,
+    AgeBiasEvaluator,
+    GenderBiasEvaluator,
+    RaceBiasEvaluator,
+    ReligionBiasEvaluator,
+    NationalityBiasEvaluator,
+    PoliticalBiasEvaluator,
+)
+
 __all__ = [
-    # Base class
+    # Cognitive bias base class and result
     "CognitiveBiasEvaluator",
-    # Cognitive bias evaluators
+    "CognitiveBiasResult",
+    # Cognitive bias evaluators (6)
     "OrderBiasEvaluator",
     "CompassionBiasEvaluator",
     "BandwagonBiasEvaluator",
     "DistractionBiasEvaluator",
     "SelectiveBiasEvaluator",
     "FrequencyBiasEvaluator",
+    # Social bias base class and result
+    "SocialBiasEvaluator",
+    "SocialBiasResult",
+    # Social bias evaluators (6)
+    "AgeBiasEvaluator",
+    "GenderBiasEvaluator",
+    "RaceBiasEvaluator",
+    "ReligionBiasEvaluator",
+    "NationalityBiasEvaluator",
+    "PoliticalBiasEvaluator",
 ]

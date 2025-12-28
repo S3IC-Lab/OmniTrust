@@ -6,6 +6,8 @@ from .data_registry import (
     DatasetRegistry,
     HumanEvalDataset,
     CognitiveBiasDataset,
+    SocialBiasDataset,
+    FlipBiasDataset,
 )
 
 __all__ = [
@@ -13,4 +15,6 @@ __all__ = [
     "DatasetRegistry",
     "HumanEvalDataset",
     "CognitiveBiasDataset",
+    "SocialBiasDataset",
+    "FlipBiasDataset",
 ]

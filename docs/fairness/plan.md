@@ -1,5 +1,20 @@
 # OmniTrust Fairness (Bias) 模块开源开发计划
 
+## 📊 当前进度 (更新于 2024-12-28)
+
+| 模块 | 进度 | 说明 |
+|------|------|------|
+| 认知偏见评估器 | ✅ 100% | 6种评估器全部完成 |
+| 社会偏见评估器 | ⏳ 0% | 待开发 |
+| 数据集 (Cognitive) | ✅ 100% | 已整合到统一数据框架 |
+| 数据集 (Social) | ⏳ 0% | 待开发 |
+| 测试脚本 | ✅ 100% | 支持 Mock 和 Ollama 模型 |
+| 量化器 | ⏳ 0% | 待开发 |
+| 可视化器 | ⏳ 0% | 待开发 |
+| 报告生成 | ⏳ 0% | 待开发 |
+
+---
+
 ## 项目概述
 
 **目标**: 基于 OmniTrust 架构独立开发 Fairness (Bias) 评估模块
@@ -64,19 +79,19 @@
 
 ### Day 3-4: 评估器实现
 
-#### 开发者A: 认知偏见评估器 (6种)
+#### 开发者A: 认知偏见评估器 (6种) ✅ 已完成
 **文件**: `modules/fairness/evaluators/cognitive/`
 
-| 评估器 | 输出文件 | 评估逻辑 |
-|--------|---------|---------|
-| OrderBiasEvaluator | `order.py` | 选项位置偏好检测 |
-| CompassionBiasEvaluator | `compassion.py` | 同情心衰减效应检测 |
-| BandwagonBiasEvaluator | `bandwagon.py` | 从众效应检测 |
-| DistractionBiasEvaluator | `distraction.py` | 注意力分散偏见检测 |
-| SelectiveBiasEvaluator | `selective.py` | 选择性注意偏见检测 |
-| FrequencyBiasEvaluator | `frequency.py` | 频率/重复偏见检测 |
+| 评估器 | 输出文件 | 评估逻辑 | 状态 |
+|--------|---------|---------|------|
+| OrderBiasEvaluator | `order.py` | 选项位置偏好检测 | ✅ |
+| CompassionBiasEvaluator | `compassion.py` | 同情心衰减效应检测 | ✅ |
+| BandwagonBiasEvaluator | `bandwagon.py` | 从众效应检测 | ✅ |
+| DistractionBiasEvaluator | `distraction.py` | 注意力分散偏见检测 | ✅ |
+| SelectiveBiasEvaluator | `selective.py` | 选择性注意偏见检测 | ✅ |
+| FrequencyBiasEvaluator | `frequency.py` | 频率/重复偏见检测 | ✅ |
 
-**共享基类**: `CognitiveBiasEvaluator(BaseBiasEvaluator)`
+**共享基类**: `CognitiveBiasEvaluator(BaseBiasEvaluator)` ✅
 - 支持成对比较评估模式
 - 标准化的 prompt 模板
 - 响应解析与分数计算
@@ -99,14 +114,15 @@
 - 情感倾向识别
 
 #### 开发者C: 数据集实现
-**文件**: `modules/fairness/datasets/`
+**文件**: `data/data_registry/` (已重构到统一数据框架)
 
-| 数据集 | 输出文件 | 用途 |
-|--------|---------|------|
-| FlipBiasDataset | `flipbias.py` | 政治偏见评估 |
-| CognitiveBiasDataset | `cognitive.py` | 认知偏见评估 (bias_demo, bias50) |
-| SocialBiasDataset | `social.py` | 社会偏见评估 (bias_society) |
-| BaseDatasetLoader | `loader.py` | 通用数据加载工具 |
+| 数据集 | 输出文件 | 用途 | 状态 |
+|--------|---------|------|------|
+| CognitiveBiasDataset | `CognitiveBias.py` | 认知偏见评估 | ✅ |
+| FlipBiasDataset | `FlipBias.py` | 政治偏见评估 | 待开发 |
+| SocialBiasDataset | `SocialBias.py` | 社会偏见评估 | 待开发 |
+
+**数据文件**: `data/dataset/cognitive_bias.json` ✅
 
 ---
 
@@ -309,13 +325,13 @@ modules/fairness/
 
 | 功能 | 数量 | 状态 |
 |------|---|------|
-| 认知偏见评估器 | 6 | 待开发 |
+| 认知偏见评估器 | 6 | ✅ 已完成 |
 | 社会偏见评估器 | 6 | 待开发 |
 | 量化器 | 2 (cognitive + social) | 待开发 |
 | 可视化器 | 2 (single + combined) | 待开发 |
-| 数据集 | 3 (cognitive + social + flipbias) | 待开发 |
+| 数据集 | 3 (cognitive + social + flipbias) | ✅ cognitive 已完成 |
 | 报告生成器 | 3 (md + pdf + unified) | 待开发 |
-| CLI工具 | 2 | 待开发 |
+| CLI工具 | 2 | 🔧 测试脚本已完成 |
 
 ---
 

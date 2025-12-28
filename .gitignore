@@ -46,8 +46,9 @@ htmlcov/
 .tox/
 .nox/
 
-# Logs
+# Logs & Plans
 docs/logs/
+docs/plans/
 *.log
 logs/
 

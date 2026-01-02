@@ -47,3 +47,4 @@ wandb
 scikit-learn
 matplotlib
 seaborn
+Pillow==9.5

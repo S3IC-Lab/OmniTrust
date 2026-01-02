@@ -2,10 +2,15 @@
 
 import os
 import json
+
+import sys
+import os
+current_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(current_dir)
 from .base_loader import BaseDataset
 from .registry import DatasetRegistry
 
-@DatasetRegistry.register("HumanEval")
+@DatasetRegistry.register("Humaneval")
 class HumanEvalDataset(BaseDataset):
     """
     Dataset class for HumanEval dataset.

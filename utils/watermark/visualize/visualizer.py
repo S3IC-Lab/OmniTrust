@@ -53,7 +53,7 @@ class BaseVisualizer:
     
     def _calculate_line_space(self, token: str, img_width: int, token_spacing: int, max_width: int) -> tuple:
         """Calculate new image width and check if it exceeds max width."""
-        word_width, _ = self.font_settings.font.getsize(token)
+        word_width, _ = self.font_settings.font.getsize(token)   # If there is an error, please check the version of Pillow. It should be Pillow==9.5 [pip install Pillow==9.5]
         new_img_width = img_width + word_width + token_spacing
         return new_img_width, new_img_width > max_width
 

@@ -4,8 +4,9 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from modules.hallucination.llm.factool.pipeline import factool_pipeline
 
-# from modules.hallucination.vlm.vl_uncertainty.pipeline import vl_uncertainty_pipeline
-# from modules.hallucination.vlm.vlm_autodetect.pipeline import vlm_autodetect_pipeline
+from modules.hallucination.vlm.vl_uncertainty.pipeline import vl_uncertainty_pipeline
+from modules.hallucination.vlm.vlm_autodetect.pipeline import vlm_autodetect_pipeline
+from modules.hallucination.vlm.vlm_qa.pipeline import vlm_qa_pipeline
 
 
 class Hallucination():
@@ -17,12 +18,14 @@ class Hallucination():
             self.pipeline = vl_uncertainty_pipeline(self.args)
         elif self.args.method == 'auto-detect':
             self.pipeline = vlm_autodetect_pipeline(self.args)
+        elif self.args.method in ['hallusionbench', 'vh-test-oeq', 'vh-test-ynq']:
+            self.pipeline = vlm_qa_pipeline(self.args)
 
     def llm_run(self):
         self.pipeline.run(self.args)
     
     def vlm_run(self):
-        if args.method == "vl-uctt" or args.method == "auto-detect":
+        if args.method in ["vl-uctt", "auto-detect", "hallusionbench", "vh-test-oeq", "vh-test-ynq"]:
             # 统一使用 pipeline.run() 方法
             self.pipeline.run()
             return
@@ -46,7 +49,10 @@ if __name__ == '__main__':
 
     elif args.method == 'hallusionbench' or args.method == 'vh-test-oeq' or args.method == 'vh-test-ynq':
         halluvh_group = parser.add_argument_group('halluvh')
-        halluvh_group.add_argument('--model-name', type=str, default="llama-7b")
+        halluvh_group.add_argument('--model-name', type=str, default="llava-1.5-13b-hf", 
+                                   help="Model name or path. Supports: llava-1.5-13b-hf, llava-1.5-7b-hf, llava-v1.6-vicuna-13b-hf, Qwen2-VL-2B-Instruct, etc.")
+        halluvh_group.add_argument('--model_path_dir', type=str, default=None, help='Model path directory (optional)')
+        halluvh_group.add_argument('--data_path_dir', type=str, default=None, help='Data path directory (optional)')
     
     elif args.method == 'auto-detect':
         auto_group = parser.add_argument_group('autodetect')
@@ -89,4 +95,4 @@ if __name__ == '__main__':
     if(args.model_type == "llm"):
         hallucination_instance.llm_run()
     else:
-        outputs = hallucination_instance.vlm_run()
+        hallucination_instance.vlm_run()

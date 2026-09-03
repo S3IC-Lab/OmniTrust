@@ -1,1 +1,2 @@
 from .data_registry.HumanEval import HumanEvalDataset
+from .data_registry.JailbreakDataset import JailbreakDataset
